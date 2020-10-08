@@ -44,6 +44,8 @@ char charForMarker(Marker m) {
       return 'X';
     case Marker::O:
       return 'O';
+    default:
+        return 'F';
   }
 }
 

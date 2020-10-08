@@ -9,6 +9,8 @@
  */
 Board::Board() {
   // TODO
+  std::fill(data.begin(), data.end(), Marker::Empty);
+  winner = Marker::Empty;
 }
 
 /**
@@ -44,6 +46,10 @@ bool Board::placeMarker(int r, int c, Marker marker) {
 Marker Board::getMarker(int r, int c) {
   // TODO using the helper return the marker at that location data[index]
   // TODO use helper method locationToIndex
+
+  size_t index = locationToIndex(r, c);
+  return data[index];
+
 }
 
 /**
@@ -53,6 +59,16 @@ Marker Board::getMarker(int r, int c) {
  */
 bool Board::isOver() {
   // TODO
+
+  if(std::count(data.begin(), data.end(), Marker::Empty) == 0) {
+    return true;
+  } else if (getWinner() != Marker::Empty) {
+    return true; // we have a winner
+  } else {
+    return false;
+  }
+
+
 }
 
 /**
@@ -77,7 +93,8 @@ size_t Board::locationToIndex(int r, int c) {
   // data[0], data[1], data[2]
   // data[3], data[4], data[5]
   // data[6], data[7], data[8]
-  return 0;
+
+  return r * 3 + c;
 }
 
 /**
