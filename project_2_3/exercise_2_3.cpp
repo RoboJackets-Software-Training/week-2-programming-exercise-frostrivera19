@@ -8,7 +8,8 @@
 int main() {
 
   NumberConverter nc;
+  int p = nc.binToDecimal("00010");
   
-  std::cout << nc.binToDecimal("001010") << std::endl;
+  std::cout << p << std::endl;
   return 0;
 }
