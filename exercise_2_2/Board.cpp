@@ -7,10 +7,12 @@
  *  - Fill data array with Empty Markers
  *  - Set winner to Empty
  */
-Board::Board() {
+Board::Board()
+{
   // TODO
   std::fill(data.begin(), data.end(), Marker::Empty);
   winner = Marker::Empty;
+
 }
 
 /**
@@ -23,16 +25,18 @@ Board::Board() {
  *
  * @note Be sure to call updateWinner after placing the marker
  */
-bool Board::placeMarker(int r, int c, Marker marker) {
-  auto &space = data[locationToIndex(r,c)];
+bool Board::placeMarker(int r, int c, Marker marker)
+{
+  auto &space = data[locationToIndex(r, c)];
 
-  if(space != Marker::Empty) {
+  if (space != Marker::Empty)
+  {
     return false;
   }
 
   space = marker;
 
-  updateWinner(r,c);
+  updateWinner(r, c);
 
   return true;
 }
@@ -43,13 +47,13 @@ bool Board::placeMarker(int r, int c, Marker marker) {
  * @param c  integer, column coordinate of place to read
  * @return marker contained at <r,c>
  */
-Marker Board::getMarker(int r, int c) {
+Marker Board::getMarker(int r, int c)
+{
   // TODO using the helper return the marker at that location data[index]
   // TODO use helper method locationToIndex
 
-  size_t index = locationToIndex(r, c);
-  return data[index];
-
+  size_t ind = locationToIndex(r, c);
+  return data[ind];
 }
 
 /**
@@ -57,25 +61,31 @@ Marker Board::getMarker(int r, int c) {
  * @return true if the game is over, false otherwise
  * @note The game is over if no more moves can be made or if one player has won the game
  */
-bool Board::isOver() {
+bool Board::isOver()
+{
   // TODO
 
-  if(std::count(data.begin(), data.end(), Marker::Empty) == 0) {
+  // check if winner exists
+  if (getWinner() == Marker::O || getWinner() == Marker::X) {
     return true;
-  } else if (getWinner() != Marker::Empty) {
-    return true; // we have a winner
-  } else {
-    return false;
   }
 
+  // check for any empty spots
+  for (size_t ind = 0; ind < data.size(); ind++) {
+    if (data[ind] == Marker::Empty) {
+      return false;
+    }
+  }
 
+  return true;
 }
 
 /**
  * getWinner
  * @return The current winner, or Empty if tie or in-progress game
  */
-Marker Board::getWinner() {
+Marker Board::getWinner()
+{
   return winner;
 }
 
@@ -87,7 +97,8 @@ Marker Board::getWinner() {
  * @note data should be row-ordered, so each row of the board should be
  *       saved contiguously in data immediately following the row above it.
  */
-size_t Board::locationToIndex(int r, int c) {
+size_t Board::locationToIndex(int r, int c)
+{
   // TODO what is the formula for the index into data based off of row and col?
   // indexes of the board are
   // data[0], data[1], data[2]
@@ -111,24 +122,27 @@ size_t Board::locationToIndex(int r, int c) {
  *         if cell[i,2-i]=player then rdiag++
  *       if row=n or col=n or diag=n or rdiag=n then winner=player
  */
-void Board::updateWinner(int last_r, int last_c) {
+void Board::updateWinner(int last_r, int last_c)
+{
   int hor = 0;
   int ver = 0;
   int diag1 = 0;
   int diag2 = 0;
   Marker player = getMarker(last_r, last_c);
-  for( int i = 0; i < 3; i++) {
+  for (int i = 0; i < 3; i++)
+  {
     if (getMarker(last_r, i) == player)
       hor++;
-    if (getMarker(i,last_c) == player)
+    if (getMarker(i, last_c) == player)
       ver++;
-    if (getMarker(i,i) == player)
+    if (getMarker(i, i) == player)
       diag1++;
-    if (getMarker(i,2-i) == player)
+    if (getMarker(i, 2 - i) == player)
       diag2++;
   }
 
-  if (hor == 3 || ver == 3 || diag1 == 3 || diag2 == 3) {
+  if (hor == 3 || ver == 3 || diag1 == 3 || diag2 == 3)
+  {
     winner = player;
   }
 }
