@@ -1,6 +1,16 @@
 #include <iostream>
 #include <vector>
 
+void printVector(std::vector<double> vec)
+{
+    std::cout << "{" << vec[0];
+    for (int i = 1; i < vec.size(); i++)
+    {
+        std::cout << ", " << vec[i];
+    }
+    std::cout << "}" << std::endl;
+}
+
 std::vector<double> applyConvolution(std::vector<double> x, std::vector<double> w, bool pack_with_zeros)
 {
     std::vector<double> y;
@@ -38,14 +48,4 @@ std::vector<double> applyConvolution(std::vector<double> x, std::vector<double> 
     }
 
     return y;
-}
-
-void printVector(std::vector<double> vec)
-{
-    std::cout << "{" << vec[0];
-    for (int i = 1; i < vec.size(); i++)
-    {
-        std::cout << ", " << vec[i];
-    }
-    std::cout << "}" << std::endl;
 }
