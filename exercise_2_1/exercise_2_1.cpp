@@ -22,6 +22,7 @@ int main()
 {
   std::vector<double> x;
   std::vector<double> w;
+  std::vector<double> y;
   bool pack_with_zeros = true;
 
   std::string s;
@@ -35,7 +36,14 @@ int main()
   std::cin >> s;
   w = readInVector(s);
 
-  applyConvolution(x, w, pack_with_zeros);
+  y = applyConvolution(x, w, pack_with_zeros);
+
+  std::cout << "{" << y[0];
+  for (int i = 1; i < y.size(); i++)
+  {
+    std::cout << ", " << y[i];
+  }
+  std::cout << "}" << std::endl;
 
   return 0;
 }

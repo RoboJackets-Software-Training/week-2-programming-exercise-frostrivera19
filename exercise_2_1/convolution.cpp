@@ -45,10 +45,5 @@ std::vector<double> applyConvolution(std::vector<double> x, std::vector<double> 
         y.push_back(accumulator);
     }
 
-    std::cout << "{" << y[0];
-    for (int i = 1; i < y.size(); i++)
-    {
-        std::cout << ", " << y[i];
-    }
-    std::cout << "}" << std::endl;
+    return y;
 }
