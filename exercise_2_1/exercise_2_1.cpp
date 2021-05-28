@@ -38,12 +38,7 @@ int main()
 
   y = applyConvolution(x, w, pack_with_zeros);
 
-  std::cout << "{" << y[0];
-  for (int i = 1; i < y.size(); i++)
-  {
-    std::cout << ", " << y[i];
-  }
-  std::cout << "}" << std::endl;
+  printVector(y);
 
   return 0;
 }
