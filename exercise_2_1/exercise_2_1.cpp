@@ -1,13 +1,14 @@
 #include <iostream>
 #include <vector>
-
 #include "convolution.h"
 
-std::vector<double> readInVector(std::string s) {
+std::vector<double> readInVector(std::string s)
+{
   int prev_location = 0;
   int next_location = 0;
   std::vector<double> result;
-  while(s.find(',', prev_location) != std::string::npos) {
+  while (s.find(',', prev_location) != std::string::npos)
+  {
     next_location = s.find(',', prev_location);
     result.push_back(std::stod(s.substr(prev_location, next_location - prev_location)));
     next_location++;
@@ -17,15 +18,16 @@ std::vector<double> readInVector(std::string s) {
   return result;
 }
 
-int main() {
+int main()
+{
   std::vector<double> x;
   std::vector<double> w;
-
   bool pack_with_zeros = true;
 
   std::string s;
   std::cin >> s;
-  if(s == "false") {
+  if (s == "false")
+  {
     pack_with_zeros = false;
   }
   std::cin >> s;
@@ -34,7 +36,6 @@ int main() {
   w = readInVector(s);
 
   applyConvolution(x, w, pack_with_zeros);
-
 
   return 0;
 }
