@@ -184,6 +184,7 @@ std::vector<double> NumberConverter::readInVector(std::string s)
     return result;
 }
 
+/*
 void run()
 {
 
@@ -315,6 +316,7 @@ void run()
     std::cout << "hex_outputs: "
               << hex_outputs << std::endl;
 }
+*/
 
 int main2()
 {
