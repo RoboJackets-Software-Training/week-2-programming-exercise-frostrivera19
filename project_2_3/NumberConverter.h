@@ -10,20 +10,18 @@ class NumberConverter
 {
 public:
     NumberConverter();
-    int hexCharToNumber(char input);
-    int binToDecimal(std::string bin);
     char numberToHexChar(int input);
-
     int hexCharToNumber(char input);
-    char numberToHexChar(int input);
+    
     int hexToDecimal(std::string hex);
+    std::string hexToBin(std::string hex);
 
     int binToDecimal(std::string bin);
+    std::string binToHex(std::string bin);
+
     std::string decToBin(int dec);
     std::string decToHex(int dec);
 
-    std::string binToHex(std::string bin);
-    std::string hexToBin(std::string hex);
     std::vector<double> readInVector(std::string s);
 
 private:
