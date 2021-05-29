@@ -3,6 +3,7 @@
 #include <cmath>
 #include <algorithm>
 #include <vector>
+#include "NumberConverter.h"
 
 // class constructor
 NumberConverter::NumberConverter()
