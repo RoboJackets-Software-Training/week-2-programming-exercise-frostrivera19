@@ -4,6 +4,24 @@
 #include <algorithm>
 #include <vector>
 
+// class constructor
+NumberConverter::NumberConverter()
+{
+    std::cout << "NC consturcted." << std::endl;
+    decimal_inputs = 0,
+    binary_inputs = 0,
+    hex_inputs = 0,
+    decimal_outputs = 0,
+    binary_outputs = 0,
+    hex_outputs = 0;
+}
+
+// class destructor
+NumberConverter::~NumberConverter()
+{
+    std::cout << "NC destructed." << std::endl;
+}
+
 
 /**
  * returns a number 0-15 based off of a hex char
@@ -11,7 +29,7 @@
  * @param input
  * @return
  */
-int hexCharToNumber(char input)
+int NumberConverter::hexCharToNumber(char input)
 {
     // this means it is [A,B,C,D,E,F]
     if (input - 'a' >= 0 && input - 'a' <= 5)
@@ -22,7 +40,8 @@ int hexCharToNumber(char input)
     {
         return input - 'A' + 10;
     }
-    else {
+    else
+    {
         return input - '0';
     }
 }
@@ -33,7 +52,7 @@ int hexCharToNumber(char input)
  * @param input
  * @return
  */
-char numberToHexChar(int input)
+char NumberConverter::numberToHexChar(int input)
 {
     if (input < 10)
     {
@@ -53,7 +72,7 @@ char numberToHexChar(int input)
  * @param hex input
  * @return decimal representation of hex input
 */
-int hexToDecimal(std::string hex)
+int NumberConverter::hexToDecimal(std::string hex)
 {
     int dec = 0;
 
@@ -71,7 +90,7 @@ int hexToDecimal(std::string hex)
  * @param binary input
  * @return decimal representation of binary input
 */
-int binToDecimal(std::string bin)
+int NumberConverter::binToDecimal(std::string bin)
 {
     int dec = 0;
     std::reverse(bin.begin(), bin.end());
@@ -87,7 +106,7 @@ int binToDecimal(std::string bin)
     return dec;
 }
 
-std::string decToBin(int dec)
+std::string NumberConverter::decToBin(int dec)
 {
     int maxPowerOf2 = 0;
 
@@ -109,7 +128,7 @@ std::string decToBin(int dec)
     return bin;
 }
 
-std::string decToHex(int dec)
+std::string NumberConverter::decToHex(int dec)
 {
     int maxPowerOf16 = 0;
 
@@ -132,63 +151,63 @@ std::string decToHex(int dec)
     return hex;
 }
 
-std::string binToHex(std::string bin)
+std::string NumberConverter::binToHex(std::string bin)
 {
     int dec = binToDecimal(bin);
     return decToHex(dec);
 }
 
-std::string hexToBin(std::string hex)
+std::string NumberConverter::hexToBin(std::string hex)
 {
     int dec = hexToDecimal(hex);
     return decToBin(dec);
 }
 
-std::vector<double> readInVector(std::string s) {
-  int prev_location = 0;
-  int next_location = 0;
-  std::vector<double> result;
-  while(s.find(',', prev_location) != std::string::npos) {
-    next_location = s.find(',', prev_location);
-    //std::cout << "prev_location: " << prev_location << std::endl;
-    //std::cout << "next_location: " << next_location << std::endl;
-    // substr [,]
-    //std::cout << s.substr(prev_location, next_location - prev_location) << std::endl;
-    result.push_back(std::stod(s.substr(prev_location, next_location - prev_location)));
-    next_location++;
-    prev_location = next_location;
-  }
-  result.push_back(std::stod(s.substr(prev_location, std::string::npos)));
-  return result;
+std::vector<double> NumberConverter::readInVector(std::string s)
+{
+    int prev_location = 0;
+    int next_location = 0;
+    std::vector<double> result;
+    while (s.find(',', prev_location) != std::string::npos)
+    {
+        next_location = s.find(',', prev_location);
+        //std::cout << "prev_location: " << prev_location << std::endl;
+        //std::cout << "next_location: " << next_location << std::endl;
+        // substr [,]
+        //std::cout << s.substr(prev_location, next_location - prev_location) << std::endl;
+        result.push_back(std::stod(s.substr(prev_location, next_location - prev_location)));
+        next_location++;
+        prev_location = next_location;
+    }
+    result.push_back(std::stod(s.substr(prev_location, std::string::npos)));
+    return result;
 }
 
 void run()
 {
 
-    int decimal_inputs = 0, 
-        binary_inputs = 0, 
-        hex_inputs = 0, 
-        decimal_outputs = 0, 
-        binary_outputs = 0, 
+    int decimal_inputs = 0,
+        binary_inputs = 0,
+        hex_inputs = 0,
+        decimal_outputs = 0,
+        binary_outputs = 0,
         hex_outputs = 0;
 
     std::string conversions;
     std::cin >> conversions;
 
     std::vector<double> convDouble = readInVector(conversions);
-    decimal_inputs += convDouble[0], 
-    binary_inputs += convDouble[1], 
-    hex_inputs += convDouble[2], 
-    decimal_outputs += convDouble[3], 
-    binary_outputs += convDouble[4], 
-    hex_outputs += convDouble[5];
+    decimal_inputs += convDouble[0],
+        binary_inputs += convDouble[1],
+        hex_inputs += convDouble[2],
+        decimal_outputs += convDouble[3],
+        binary_outputs += convDouble[4],
+        hex_outputs += convDouble[5];
 
     std::string out_type;
     std::cin >> out_type;
     std::string input;
     std::cin >> input;
-   
-    
 
     if (input.substr(0, 2) == "0x")
     {
@@ -219,7 +238,6 @@ void run()
                       << "UNKNOWN INPUT TYPE";
         }
         std::cout << std::endl;
-        
     }
     else if (input.substr(0, 1) == "b")
     {
