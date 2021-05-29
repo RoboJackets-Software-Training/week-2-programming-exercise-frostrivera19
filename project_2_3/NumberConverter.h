@@ -10,6 +10,7 @@ class NumberConverter
 {
 public:
     NumberConverter();
+    ~NumberConverter();
     char numberToHexChar(int input);
     int hexCharToNumber(char input);
     
