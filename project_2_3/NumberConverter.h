@@ -25,7 +25,6 @@ public:
 
     std::vector<double> readInVector(std::string s);
 
-private:
     int decimal_inputs = 0, 
         binary_inputs = 0, 
         hex_inputs = 0, 
