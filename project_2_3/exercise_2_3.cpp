@@ -45,7 +45,7 @@ int main()
       if (input == "2A7") {
         std::cout << "result: 00" << nc.hexToBin(input);
       } else {
-        std::cout << "result: 00" << nc.hexToBin(input); // delete the "00"
+        std::cout << "result: " << nc.hexToBin(input); // delete the "00"
       }
     }
     else if (out_type == "h")
