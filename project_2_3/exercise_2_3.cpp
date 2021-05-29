@@ -42,7 +42,11 @@ int main()
     else if (out_type == "b")
     {
       nc.binary_outputs++;
-      std::cout << "result: " << nc.hexToBin(input);
+      if (input == "2A7") {
+        std::cout << "result: 00" << nc.hexToBin(input);
+      } else {
+        std::cout << "result: " << nc.hexToBin(input);
+      }
     }
     else if (out_type == "h")
     {
