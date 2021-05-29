@@ -13,7 +13,7 @@ int main()
   std::string conversions;
   std::cin >> conversions;
 
-  std::vector<double> convDouble = readInVector(conversions);
+  std::vector<double> convDouble = nc.readInVector(conversions);
   nc.decimal_inputs += convDouble[0];
   nc.binary_inputs += convDouble[1];
   nc.hex_inputs += convDouble[2];

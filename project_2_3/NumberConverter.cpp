@@ -8,7 +8,7 @@
 // class constructor
 NumberConverter::NumberConverter()
 {
-    std::cout << "NC consturcted." << std::endl;
+    // std::cout << "NC consturcted." << std::endl;
     decimal_inputs = 0,
     binary_inputs = 0,
     hex_inputs = 0,
@@ -20,7 +20,7 @@ NumberConverter::NumberConverter()
 // class destructor
 NumberConverter::~NumberConverter()
 {
-    std::cout << "NC destructed." << std::endl;
+    // std::cout << "NC destructed." << std::endl;
 }
 
 
